@@ -1,0 +1,15 @@
+# C#, .NET
+*bin/
+*obj/
+*.vs/
+
+# Metadata
+*.meta
+.idea
+
+# User-specific files
+*.user
+*.userprefs
+
+# TODO file
+.TODO
