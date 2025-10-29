@@ -42,18 +42,6 @@ namespace Core.Platforms.Windows
             SetWindowLong(hwnd, GWL_STYLE, style);
 
             mauiWindow.ExtendsContentIntoTitleBar = true;
-
-            // Change current window style on MauiWindow layer.
-            //var handle = WinRT.Interop.WindowNative.GetWindowHandle(mauiWindow);
-            //var id = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(handle);
-            //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(id);
-            //if (appWindow.Presenter is Microsoft.UI.Windowing.OverlappedPresenter pre)
-            //{
-            //    pre.IsMaximizable = false;
-            //    pre.IsResizable = false;
-            //    pre.IsMinimizable = false;
-            //    pre.SetBorderAndTitleBar(false, false);
-            //}
         }
     }
 }
