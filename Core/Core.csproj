@@ -26,7 +26,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
-	<ItemGroup>
+  <ItemGroup>
 		
     <!-- Custom Fonts -->
     <MauiFont Include="Resources\Fonts\*" />
@@ -38,12 +38,38 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Models\" />
 	  <Folder Include="Resources\AppIcon\" />
 	  <Folder Include="Resources\Fonts\" />
+	  <Folder Include="Views\Desktop\Components\Controls\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\Desktop\Components\Menubar\MenubarItem.xaml.cs">
+	    <DependentUpon>MenubarItem.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Desktop\Components\Menubar\Menubar.xaml.cs">
+	    <DependentUpon>Menubar.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Desktop\Components\Titlebar\Titlebar.xaml.cs">
+	    <DependentUpon>Titlebar.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Desktop\PlaylistsPage.xaml.cs">
+	    <DependentUpon>PlaylistsPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Resources\Styles\DesktopLayout.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Desktop\Components\Menubar\MenubarItem.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Desktop\Components\Menubar\Menubar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Desktop\Components\Titlebar\Titlebar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
