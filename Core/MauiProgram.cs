@@ -18,7 +18,7 @@ namespace Core
                     fonts.AddFont("Inder-Regular.ttf", "Inder");
                 })
                 .RegisterViewModels()
-                .RegisterComponents()
+                //.RegisterComponents()
                 .RegisterViews()
                 .ConfigureLifecycleEvents(events =>
                 {
@@ -31,7 +31,7 @@ namespace Core
                             WindowConfigurator.Configure(w);
                         });
                     });
-#endif
+#endif  
                 });
 
 #if DEBUG
@@ -46,10 +46,7 @@ namespace Core
         /// </summary>
         public static MauiAppBuilder RegisterComponents(this MauiAppBuilder builder)
         {
-#if WINDOWS
-            //builder.Services.AddSingleton<Titlebar>();
-#endif
-
+            // ...
             return builder;
         }
 
@@ -70,6 +67,7 @@ namespace Core
         /// </summary>
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
         {
+            builder.Services.AddSingleton<AppViewModel>();
             builder.Services.AddSingleton<PlaylistsViewModel>();
 
             return builder;

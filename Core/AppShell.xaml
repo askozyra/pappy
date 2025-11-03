@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:Core.Views.Desktop"
     Shell.FlyoutBehavior="Disabled"
     Shell.NavBarIsVisible="False">
-
+    
     <ShellContent
         ContentTemplate="{DataTemplate local:PlaylistsPage}"
-        Route="Core.Views/Desktop/PlaylistsPage" />
+        Route="Views/Desktop/PlaylistsPage" />
 
 </Shell>

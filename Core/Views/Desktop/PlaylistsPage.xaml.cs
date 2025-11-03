@@ -4,10 +4,14 @@ namespace Core.Views.Desktop
 {
     public partial class PlaylistsPage : ContentPage
     {
-        public PlaylistsPage(PlaylistsViewModel context)
+        public PlaylistsPage(AppViewModel appVM, PlaylistsViewModel playlistsVM)
         {
             InitializeComponent();
-            BindingContext = context;
+            BindingContext = new
+            {
+                App = appVM,
+                Playlists = playlistsVM
+            };
         }
     }
 }

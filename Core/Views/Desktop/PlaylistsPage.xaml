@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Padding="0"
              x:Class="Core.Views.Desktop.PlaylistsPage">
-    <VerticalStackLayout>
+    <VerticalStackLayout BackgroundColor="#449">
     </VerticalStackLayout>
 </ContentPage>

@@ -2,6 +2,11 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Core.Views.Desktop.Components.Titlebar.Titlebar">
-    <HorizontalStackLayout>
+    <HorizontalStackLayout HeightRequest="24" BackgroundColor="#333">
+        <HorizontalStackLayout>
+            <Button Text=".." Clicked="MinimizeWindow"/>
+            <Button Text="‹›" Clicked="MaximizeRestoreWindow"/>
+            <Button Text="×" Clicked="CloseWindow"/>
+        </HorizontalStackLayout>
     </HorizontalStackLayout>
 </ContentView>
