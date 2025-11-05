@@ -38,6 +38,7 @@ namespace Core.Platforms.Windows
         private struct RECT { public int left, top, right, bottom; }
         #endregion
 
+        private static UInt32 WindowBgColor = 0x00333333;
         public static AppWindow AppWindow { get; set; }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace Core.Platforms.Windows
             if (msg == WM_ERASEBKGND)
             {
                 GetClientRect(hwnd, out RECT rc);
-                IntPtr brush = CreateSolidBrush(0x00333333);
+                IntPtr brush = CreateSolidBrush(WindowBgColor);
                 FillRect(wParam, ref rc, brush);
                 return IntPtr.Zero;
             }
