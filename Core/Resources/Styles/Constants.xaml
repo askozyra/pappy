@@ -4,6 +4,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <x:String x:Key="CurrentFontFamily">Inder</x:String>
+    <x:Double x:Key="CurrentFontSize">12</x:Double>
+
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
 

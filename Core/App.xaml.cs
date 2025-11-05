@@ -1,6 +1,4 @@
-﻿using Core.Platforms.Windows;
-
-namespace Core
+﻿namespace Core
 {
     public partial class App : Application
     {
@@ -11,7 +9,7 @@ namespace Core
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new CustomWindow(new AppShell());
+            return new Window(new AppShell());
         }
     }
 }

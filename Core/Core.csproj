@@ -32,6 +32,11 @@
     <MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\AppIcon\ico21x20.png" />
+    <None Remove="Resources\Images\sora21x20px.png" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
@@ -40,19 +45,20 @@
 	<ItemGroup>
 	  <Folder Include="Commands\" />
 	  <Folder Include="Models\" />
-	  <Folder Include="Resources\AppIcon\" />
 	  <Folder Include="Resources\Fonts\" />
 	  <Folder Include="Views\Desktop\Components\Controls\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\Desktop\Components\Menubar\MenubarItem.xaml.cs">
-	    <DependentUpon>MenubarItem.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Desktop\Components\Menubar\Menubar.xaml.cs">
-	    <DependentUpon>Menubar.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Desktop\Components\Titlebar\Titlebar.xaml.cs">
+	  <MauiIcon Include="Resources\AppIcon\ico21x20.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\sora21x20px.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\Desktop\Components\Window\Titlebar.xaml.cs">
 	    <DependentUpon>Titlebar.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\Desktop\PlaylistsPage.xaml.cs">
@@ -64,13 +70,7 @@
 	  <MauiXaml Update="Resources\Styles\DesktopLayout.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Desktop\Components\Menubar\MenubarItem.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Desktop\Components\Menubar\Menubar.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Desktop\Components\Titlebar\Titlebar.xaml">
+	  <MauiXaml Update="Views\Desktop\Components\Window\Titlebar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

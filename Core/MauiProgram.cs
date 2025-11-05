@@ -16,9 +16,9 @@ namespace Core
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("Inder-Regular.ttf", "Inder");
+                    fonts.AddFont("PixelifySans-Regular.ttf", "Pixel");
                 })
                 .RegisterViewModels()
-                //.RegisterComponents()
                 .RegisterViews()
                 .ConfigureLifecycleEvents(events =>
                 {
@@ -26,9 +26,9 @@ namespace Core
                     // Configure window chrome appearance
                     events.AddWindows(events =>
                     {
-                        events.OnWindowCreated(w =>
+                        events.OnWindowCreated(wnd =>
                         {
-                            WindowConfigurator.Configure(w);
+                            WindowConfigurator.Configure();
                         });
                     });
 #endif  
@@ -39,15 +39,6 @@ namespace Core
 #endif
 
             return builder.Build();
-        }
-
-        /// <summary>
-        /// Register common components and controls in DI container.
-        /// </summary>
-        public static MauiAppBuilder RegisterComponents(this MauiAppBuilder builder)
-        {
-            // ...
-            return builder;
         }
 
         /// <summary>

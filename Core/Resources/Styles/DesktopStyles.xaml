@@ -59,23 +59,23 @@
 
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
-        <Setter Property="FontFamily" Value="Inder"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="VerticalOptions" Value="Center"/>
     </Style>
 
     <Style TargetType="RadioButton">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
-        <Setter Property="FontFamily" Value="Inder"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}"/>
     </Style>
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray222}}" />
-        <Setter Property="FontFamily" Value="Inder"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}"/>
         <Setter Property="BorderWidth" Value="0"/>
         <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="Padding" Value="5"/>
@@ -108,9 +108,9 @@
 
     <Style TargetType="Entry">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
-        <Setter Property="BackgroundColor" Value="#333" />
-        <Setter Property="FontFamily" Value="Inder"/>
-        <Setter Property="FontSize" Value="12" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray333}}" />
+        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}" />
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Dark={StaticResource Gray666}}" />
         <Setter Property="MinimumHeightRequest" Value="15"/>
         <Setter Property="MinimumWidthRequest" Value="15"/>

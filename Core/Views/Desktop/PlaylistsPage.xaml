@@ -1,8 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:windowComponents="clr-namespace:Core.Views.Desktop.Components.Window"
              Padding="0"
              x:Class="Core.Views.Desktop.PlaylistsPage">
-    <VerticalStackLayout BackgroundColor="#449">
-    </VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <windowComponents:Titlebar/>
+        <Grid Style="{StaticResource MenubarPlaceholder}"/>
+        
+        <Grid Style="{StaticResource PageContentContainer}">
+            <!-- Page content -->
+        </Grid>
+    </Grid>
 </ContentPage>

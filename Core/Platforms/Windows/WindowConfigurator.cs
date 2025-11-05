@@ -39,14 +39,22 @@ namespace Core.Platforms.Windows
         #endregion
 
         private static UInt32 WindowBgColor = 0x00333333;
+
         public static AppWindow AppWindow { get; set; }
+
+        static WindowConfigurator()
+        {
+            InitAppWindow();
+        }
 
         /// <summary>
         /// Configure window chrome appearance.
         /// </summary>
-        public static void Configure(Microsoft.UI.Xaml.Window window)
+        public static void Configure()
         {
-            if (window is not MauiWinUIWindow mauiWindow)
+            var window = Application.Current?.Windows[0];
+
+            if (window?.Handler.PlatformView is not MauiWinUIWindow mauiWindow)
                 return;
 
             var hwnd = WindowNative.GetWindowHandle(mauiWindow);
@@ -62,8 +70,16 @@ namespace Core.Platforms.Windows
             _prevProc = SetWindowLongPtr(hwnd, GWL_WNDPROC, Marshal.GetFunctionPointerForDelegate(_procDelegate));
 
             mauiWindow.ExtendsContentIntoTitleBar = true;
+        }
 
-            var windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
+        private static void InitAppWindow()
+        {
+            var wnd = Application.Current?.Windows[0];
+
+            var nativeWindow = wnd?.Handler.PlatformView as Microsoft.UI.Xaml.Window;
+            var hwnd = WindowNative.GetWindowHandle(nativeWindow);
+
+            WindowId windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
             AppWindow = AppWindow.GetFromWindowId(windowId);
         }
 
@@ -75,13 +91,13 @@ namespace Core.Platforms.Windows
                 GetClientRect(hwnd, out RECT rc);
                 IntPtr brush = CreateSolidBrush(WindowBgColor);
                 FillRect(wParam, ref rc, brush);
+
                 return IntPtr.Zero;
             }
 
             // Call original WndProc.
             return CallPrev(hwnd, msg, wParam, lParam);
         }
-
         private static IntPtr CallPrev(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam)
             => CallWindowProc(_prevProc, hwnd, msg, wParam, lParam);
 
