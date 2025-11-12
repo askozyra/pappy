@@ -12,6 +12,8 @@ namespace Core.Platforms.Windows
     public static class WindowConfigurator
     {
         #region WinAPI definitions
+        private const int SW_SHOW = 5;
+
         // Index to get/set window style.
         private const int GWL_STYLE = -16;
         // Index to get/set window procedure.
@@ -70,6 +72,8 @@ namespace Core.Platforms.Windows
             _prevProc = SetWindowLongPtr(hwnd, GWL_WNDPROC, Marshal.GetFunctionPointerForDelegate(_procDelegate));
 
             mauiWindow.ExtendsContentIntoTitleBar = true;
+
+            ShowWindow(hwnd, SW_SHOW);
         }
 
         private static void InitAppWindow()
@@ -102,6 +106,9 @@ namespace Core.Platforms.Windows
             => CallWindowProc(_prevProc, hwnd, msg, wParam, lParam);
 
         #region WinAPI imports
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         // Set/Get window parameters.
         [DllImport("user32.dll", SetLastError = true)]
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
