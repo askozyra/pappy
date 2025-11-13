@@ -32,7 +32,7 @@ namespace Core
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
         {
 #if WINDOWS
-            builder.Services.AddSingleton<PlaylistsPage>();
+            builder.Services.AddTransient<PlaylistsPage>();
 #endif
 
             return builder;
@@ -44,7 +44,7 @@ namespace Core
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
         {
             builder.Services.AddSingleton<AppViewModel>();
-            builder.Services.AddSingleton<PlaylistsViewModel>();
+            builder.Services.AddTransient<PlaylistsViewModel>();
 
             return builder;
         }
