@@ -1,8 +1,6 @@
-﻿using Core.Platforms.Windows;
-using Core.ViewModels;
+﻿using Core.ViewModels;
 using Core.Views.Desktop;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.LifecycleEvents;
 
 namespace Core
 {
@@ -19,20 +17,7 @@ namespace Core
                     fonts.AddFont("PixelifySans-Regular.ttf", "Pixel");
                 })
                 .RegisterViewModels()
-                .RegisterViews()
-                .ConfigureLifecycleEvents(events =>
-                {
-#if WINDOWS
-                    // Configure window chrome appearance
-                    events.AddWindows(events =>
-                    {
-                        events.OnWindowCreated(wnd =>
-                        {
-                            WindowConfigurator.Configure();
-                        });
-                    });
-#endif  
-                });
+                .RegisterViews();
 
 #if DEBUG
             builder.Logging.AddDebug();

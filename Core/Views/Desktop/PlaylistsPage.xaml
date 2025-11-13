@@ -5,17 +5,6 @@
              Padding="0"
              x:Class="Core.Views.Desktop.PlaylistsPage">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="24"/>
-            <RowDefinition Height="24"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <windowComponents:Titlebar/>
-        <Grid Style="{StaticResource MenubarPlaceholder}"/>
-        
-        <Grid Style="{StaticResource PageContentContainer}">
-            <!-- Page content -->
-        </Grid>
+        <!-- Page content -->
     </Grid>
 </ContentPage>

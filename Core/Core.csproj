@@ -58,9 +58,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\Desktop\Components\Window\Titlebar.xaml.cs">
-	    <DependentUpon>Titlebar.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Views\Desktop\PlaylistsPage.xaml.cs">
 	    <DependentUpon>PlaylistsPage.xaml</DependentUpon>
 	  </Compile>
@@ -68,9 +65,6 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Resources\Styles\DesktopLayout.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Desktop\Components\Window\Titlebar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
