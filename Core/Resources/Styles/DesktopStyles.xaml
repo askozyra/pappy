@@ -4,6 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <Style TargetType="ContentPage" x:Key="Page">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray222}}" />
+    </Style>
+
     <Style TargetType="ProgressBar">
         <Setter Property="ProgressColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
     </Style>
@@ -87,8 +91,8 @@
                     <VisualState x:Name="Normal"/>
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                           <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource GrayAAA}}" />
-                           <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray444}}" />
+                            <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource GrayAAA}}" />
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray444}}" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="PointerOver">
@@ -98,7 +102,7 @@
                     </VisualState>
                     <VisualState x:Name="Pressed">
                         <VisualState.Setters>
-                           <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Black}}" />
+                            <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Black}}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>

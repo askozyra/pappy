@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿	<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
@@ -11,7 +11,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>Core</ApplicationTitle>
+		<ApplicationTitle>pappy</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.askozyra.pappy</ApplicationId>
@@ -33,7 +33,9 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\AppIcon\appicon.ico" />
     <None Remove="Resources\AppIcon\ico21x20.png" />
+    <None Remove="Resources\Images\pappy.png" />
     <None Remove="Resources\Images\sora21x20px.png" />
   </ItemGroup>
 
@@ -50,7 +52,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiIcon Include="Resources\AppIcon\ico21x20.png" />
+	  <MauiIcon Include="Resources\AppIcon\appicon.ico">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiIcon>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\pappy.png" />
 	</ItemGroup>
 
 	<ItemGroup>

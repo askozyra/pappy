@@ -3,12 +3,18 @@
     x:Class="Core.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Core.Views.Desktop"
-    Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False">
-    
-    <ShellContent
-        ContentTemplate="{DataTemplate local:PlaylistsPage}"
-        Route="Views/Desktop/PlaylistsPage" />
+    FlyoutBehavior="Locked"
+    FlyoutBackgroundColor="{AppThemeBinding Dark={StaticResource Gray2A2A2A}}"
+    xmlns:local="clr-namespace:Core.Views.Desktop">
+
+    <Shell.MenuBarItems>
+        <MenuBarItem Text="[placeholder]"/>
+    </Shell.MenuBarItems>
+
+    <FlyoutItem Title="Playlists">
+        <ShellContent
+            ContentTemplate="{DataTemplate local:PlaylistsPage}"
+            Route="Playlists"/>
+    </FlyoutItem>
 
 </Shell>
