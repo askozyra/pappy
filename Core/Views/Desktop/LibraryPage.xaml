@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Core.Views.Desktop.LibraryPage"
+             Title="LibraryPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Text="Open Folder" Command="{Binding OpenFolderCommand}" HeightRequest="20" Padding="0" Margin="0"/>
+        <CollectionView Grid.Row="1" VerticalScrollBarVisibility="Always" CanReorderItems="True" ItemsSource="{Binding CurrentTracks}" SelectedItem="{Binding SelectedItem}" SelectionMode="Single" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource CollectionViewItemBorderStyle}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="CommonStates">
+
+                                        <!-- Normal -->
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter TargetName="PlayHoverButton"
+                                                        Property="IsVisible"
+                                                        Value="False" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        
+                                        <!-- Hovered -->
+                                        <VisualState x:Name="PointerOver">
+                                            <VisualState.Setters>
+                                                <Setter TargetName="PlayHoverButton"
+                                                        Property="IsVisible"
+                                                        Value="True" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                                
+                                        <!-- Selected -->
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter TargetName="PlayHoverButton"
+                                                        Property="IsVisible"
+                                                        Value="True" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                        <Grid BackgroundColor="#505" VerticalOptions="Fill">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            
+                            <Button Grid.Column="0" Text="|>" x:Name="PlayHoverButton" Command="{Binding PlayMediaCommand}"  IsVisible="False"/>
+                            <Label Grid.Column="1" HorizontalOptions="Start" Text="{Binding .}" Style="{StaticResource CollectionViewItemLabelStyle}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
