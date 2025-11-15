@@ -8,13 +8,17 @@
     xmlns:local="clr-namespace:Core.Views.Desktop">
 
     <Shell.MenuBarItems>
-        <MenuBarItem Text="[placeholder]"/>
+        <MenuBarItem Text="File">
+            <MenuFlyoutSubItem Text="Open">
+                <MenuFlyoutItem Text="Audio / Video…" Command="{Binding OpenMediaCommand}"/>
+            </MenuFlyoutSubItem>
+        </MenuBarItem>
     </Shell.MenuBarItems>
 
-    <FlyoutItem Title="Playlists">
+    <FlyoutItem Title="Player" Icon="placeholder_icon.png">
         <ShellContent
-            ContentTemplate="{DataTemplate local:PlaylistsPage}"
-            Route="Playlists"/>
+            ContentTemplate="{DataTemplate local:PlayerPage}"
+            Route="Player"/>
     </FlyoutItem>
 
 </Shell>
