@@ -1,9 +1,11 @@
-﻿	<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
-		
-    <OutputType>Exe</OutputType>
+
+		<AssemblyName>pappy</AssemblyName>
+
+		<OutputType>Exe</OutputType>
 		<RootNamespace>Core</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
@@ -27,18 +29,26 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
-  <ItemGroup>
-		
-    <!-- Custom Fonts -->
-    <MauiFont Include="Resources\Fonts\*" />
+	<ItemGroup>
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="Resources\AppIcon\appicon.ico" />
-    <None Remove="Resources\AppIcon\ico21x20.png" />
-    <None Remove="Resources\Images\pappy.png" />
-    <None Remove="Resources\Images\placeholder_icon.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Views\Platforms\Windows\Components\**" />
+		<EmbeddedResource Remove="Views\Platforms\Windows\Components\**" />
+		<MauiCss Remove="Views\Platforms\Windows\Components\**" />
+		<MauiXaml Remove="Views\Platforms\Windows\Components\**" />
+		<None Remove="Views\Platforms\Windows\Components\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\AppIcon\appicon.ico" />
+		<None Remove="Resources\AppIcon\ico21x20.png" />
+		<None Remove="Resources\Images\pappy.png" />
+		<None Remove="Resources\Images\placeholder_icon.png" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="6.1.3" />
@@ -47,29 +57,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Commands\" />
-	  <Folder Include="Resources\Fonts\" />
-	  <Folder Include="Views\Desktop\Components\Controls\" />
+		<Folder Include="Commands\" />
+		<Folder Include="Resources\Fonts\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiIcon Include="Resources\AppIcon\appicon.ico">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </MauiIcon>
+		<MauiIcon Include="Resources\AppIcon\appicon.ico">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiIcon>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Images\pappy.png" />
-	  <MauiImage Include="Resources\Images\placeholder_icon.png" />
+		<MauiImage Include="Resources\Images\pappy.png" />
+		<MauiImage Include="Resources\Images\placeholder_icon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Resources\Styles\DesktopLayout.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Desktop\LibraryPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="Resources\Styles\DesktopLayout.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Platforms\Windows\PlayerPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 </Project>

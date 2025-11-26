@@ -1,101 +1,61 @@
-﻿using System.Collections.ObjectModel;
+﻿using Core.Models.Music;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Windows.Storage.Pickers;
-using WinRT.Interop;
 
 namespace Core.ViewModels
 {
-    public class Track
+    public class LibraryViewModel : INotifyPropertyChanged, IQueryAttributable
     {
-        public string Title { get; set; }
-        public string Source { get; set; }
-    }
-
-    public class LibraryViewModel : INotifyPropertyChanged
-    {
-        public ObservableCollection<string> CurrentTracks { get; set; }
-
-
-        public ICommand OpenFolderCommand { get; set; }
-        public ICommand PlayMediaCommand { get; set; }
-
+        private ObservableCollection<Track> _currentTracks;
         private Track _selectedItem;
+
+        public ObservableCollection<Track> CurrentTracks
+        {
+            get { return _currentTracks; }
+            set
+            {
+                _currentTracks = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Track SelectedItem
         {
             get { return _selectedItem; }
             set
             {
                 _selectedItem = value;
-                OnPropertyChanged(nameof(SelectedItem));
+                OnPropertyChanged();
             }
         }
+
+        public ICommand PlayMediaCommand { get; set; }
 
         public LibraryViewModel()
         {
-            CurrentTracks = new ObservableCollection<string>();
+            CurrentTracks = new ObservableCollection<Track>();
 
-            OpenFolderCommand = new Command(OpenFolder);
-            PlayMediaCommand = new Command<string>(PlayMedia);
-            // add play btn on hover
-            // add playback controls on bottom?
+            PlayMediaCommand = new Command<Track>(PlayMedia);
         }
 
-        private void PlayMedia(string source)
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-
+            query.TryGetValue("Tracks", out var obj);
+            if (obj is not null && obj is IList<Track> tracks)
+                CurrentTracks = new ObservableCollection<Track>(tracks);
         }
 
-        private async void OpenFolder()
+        private async void PlayMedia(Track track)
         {
-            string res = await OpenMedia();
-            AddFiles(res);
-        }
-
-        private async Task<string> OpenMedia()
-        {
-            try
+            await Shell.Current.GoToAsync("///Player", new Dictionary<string, object>()
             {
-#if WINDOWS
-                var folderPicker = new FolderPicker();
-
-                // MUST specify a file type filter (even if it's "*")
-                folderPicker.FileTypeFilter.Add("*");
-
-                // Get the MAUI window handle and attach it to the picker
-                var mauiWindow = App.Current!.Windows.FirstOrDefault();
-                var nativeWindow = (mauiWindow?.Handler?.PlatformView as Microsoft.UI.Xaml.Window);
-                var hWnd = WindowNative.GetWindowHandle(nativeWindow);
-                InitializeWithWindow.Initialize(folderPicker, hWnd);
-
-                // Show dialog
-                var folder = await folderPicker.PickSingleFolderAsync();
-                return folder?.Path;
-#else
-    return null;
-#endif
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error picking file: {ex.Message}");
-            }
-
-            return null;
+                { "Track", track }
+            });
         }
 
-        private void AddFiles(string folderPath)
-        {
-            var files = Directory.GetFiles(folderPath);
-
-            foreach (var file in files)
-            {
-                CurrentTracks.Add(Path.GetFileName(file));
-            }
-        }
-
-
-
-        private void OnPropertyChanged(string? propertyName = null)
+        private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

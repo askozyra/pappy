@@ -1,10 +1,10 @@
 ﻿using Core.Helpers;
+using Core.Models.Music;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace Core.ViewModels
 {
-    public class PlayerViewModel : INotifyPropertyChanged
+    public class PlayerViewModel : INotifyPropertyChanged, IQueryAttributable
     {
         public AudioManager AudioManager { get; set; }
 
@@ -13,8 +13,13 @@ namespace Core.ViewModels
             AudioManager = audioManager;
         }
 
-        protected void OnPropertyChanged([CallerMemberName] string name = null) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            query.TryGetValue("Track", out var obj);
+            if (obj is not null && obj is Track track)
+                AudioManager.SetCurrentTrack(track);
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

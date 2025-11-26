@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:communityToolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             Style="{StaticResource Page}"
-             x:Class="Core.Views.Desktop.PlayerPage">
+             x:Class="Core.Views.Platforms.Windows.PlayerPage"
+             Style="{StaticResource Page}">
 
     <Grid>
         <communityToolkit:MediaElement
             x:Name="MediaPlayer"
+            ShouldAutoPlay="True"
             MetadataArtist="{Binding AudioManager.CurrentTrack.Artist}"
             MetadataTitle="{Binding AudioManager.CurrentTrack.Title}"
-            Source="{Binding AudioManager.CurrentTrack.Source}"/>
+            Source="{Binding AudioManager.CurrentTrack.Source}" />
     </Grid>
 </ContentPage>

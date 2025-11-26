@@ -13,40 +13,55 @@
     </Style>
 
     <Style TargetType="CollectionView">
-        <Setter Property="SelectionMode" Value="Single"/>
-        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="SelectionMode" Value="Single" />
+        <Setter Property="CanReorderItems" Value="False" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Always" />
+        <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="ItemsLayout">
             <Setter.Value>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="0" />
             </Setter.Value>
         </Setter>
     </Style>
 
     <Style TargetType="Label" x:Key="CollectionViewItemLabelStyle">
+        <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="FontSize" Value="16" />
-        <Setter Property="TextColor" Value="#fff"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
     </Style>
-    
-    <Style TargetType="Border" x:Key="CollectionViewItemBorderStyle">
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="Margin" Value="0"/>
+
+    <Style TargetType="Label" x:Key="CollectionViewHeaderLabelStyle">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+    </Style>
+
+    <Style TargetType="Grid" x:Key="CollectionViewHeaderGridStyle">
+        <Setter Property="Padding" Value="0, 10" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray333}}" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="CollectionViewItemGridStyle">
+        <Setter Property="Padding" Value="0, 10" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="VerticalOptions" Value="Fill" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <Setter.Value>
                 <VisualStateGroupList>
                     <VisualStateGroup Name="CommonStates">
                         <VisualState Name="Normal">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="#2A2A2A"/>
+                                <Setter TargetName="PlayHoverButton"
+                                    Property="IsVisible"
+                                    Value="False" />
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState Name="PointerOver">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="#444"/>
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="#000"/>
+                                <Setter TargetName="PlayHoverButton"
+                                    Property="IsVisible"
+                                    Value="True" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -62,12 +77,12 @@
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
-                            <Setter Property="MinimumTrackColor" Value="{AppThemeBinding Dark={StaticResource Gray666}}"/>
-                            <Setter Property="MaximumTrackColor" Value="{AppThemeBinding Dark={StaticResource Gray666}}"/>
-                            <Setter Property="ThumbColor" Value="{AppThemeBinding Dark={StaticResource Gray666}}"/>
+                            <Setter Property="MinimumTrackColor" Value="{AppThemeBinding Dark={StaticResource Gray666}}" />
+                            <Setter Property="MaximumTrackColor" Value="{AppThemeBinding Dark={StaticResource Gray666}}" />
+                            <Setter Property="ThumbColor" Value="{AppThemeBinding Dark={StaticResource Gray666}}" />
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
@@ -76,10 +91,10 @@
     </Style>
 
     <Style TargetType="CheckBox">
-        <Setter Property="MinimumHeightRequest" Value="15"/>
-        <Setter Property="MinimumWidthRequest" Value="15"/>
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray222}}"/>
-        <Setter Property="Color" Value="{AppThemeBinding Dark={StaticResource White}}"/>
+        <Setter Property="MinimumHeightRequest" Value="15" />
+        <Setter Property="MinimumWidthRequest" Value="15" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray222}}" />
+        <Setter Property="Color" Value="{AppThemeBinding Dark={StaticResource White}}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -106,32 +121,32 @@
 
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
-        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}"/>
-        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
-        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
     </Style>
 
     <Style TargetType="RadioButton">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
-        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}"/>
-        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}" />
     </Style>
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray222}}" />
-        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}"/>
-        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}"/>
-        <Setter Property="BorderWidth" Value="0"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="MinimumHeightRequest" Value="20"/>
-        <Setter Property="MinimumWidthRequest" Value="20"/>
+        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="MinimumHeightRequest" Value="20" />
+        <Setter Property="MinimumWidthRequest" Value="20" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal"/>
+                    <VisualState x:Name="Normal" />
                     <VisualState x:Name="Disabled">
                         <VisualState.Setters>
                             <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource GrayAAA}}" />
@@ -156,11 +171,11 @@
     <Style TargetType="Entry">
         <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource Gray333}}" />
-        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}"/>
+        <Setter Property="FontFamily" Value="{StaticResource CurrentFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource CurrentFontSize}" />
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Dark={StaticResource Gray666}}" />
-        <Setter Property="MinimumHeightRequest" Value="15"/>
-        <Setter Property="MinimumWidthRequest" Value="15"/>
+        <Setter Property="MinimumHeightRequest" Value="15" />
+        <Setter Property="MinimumWidthRequest" Value="15" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">

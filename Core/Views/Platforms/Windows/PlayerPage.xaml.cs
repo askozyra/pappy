@@ -1,6 +1,6 @@
 using Core.ViewModels;
 
-namespace Core.Views.Desktop;
+namespace Core.Views.Platforms.Windows;
 
 public partial class PlayerPage : ContentPage
 {

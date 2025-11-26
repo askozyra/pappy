@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Core.Models"
+             x:Class="Core.Views.Platforms.Windows.LibraryPage"
+             x:Name="RootPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <CollectionView
+            Grid.Row="1"
+            ItemsSource="{Binding CurrentTracks}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+            <CollectionView.Header>
+                <Grid Style="{StaticResource CollectionViewHeaderGridStyle}" VerticalOptions="Fill">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="200" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="1" 
+                        Text="Title"
+                        Style="{StaticResource CollectionViewHeaderLabelStyle}" />
+                    <Label
+                        Grid.Column="2"
+                        Text="Extension"
+                        Style="{StaticResource CollectionViewHeaderLabelStyle}" />
+                    <Label
+                        Grid.Column="3"
+                        Text="Duration"
+                        Style="{StaticResource CollectionViewHeaderLabelStyle}" />
+                </Grid>
+            </CollectionView.Header>
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="2" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Music.Track">
+                    <Grid Style="{StaticResource CollectionViewItemGridStyle}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="200" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button
+                            Grid.Column="0"
+                            x:Name="PlayHoverButton"
+                            Text="▶"
+                            Padding="2"
+                            WidthRequest="15"
+                            HeightRequest="15"
+                            Margin="0"
+                            Command="{Binding BindingContext.PlayMediaCommand, Source={x:Reference RootPage}}"
+                            CommandParameter="{Binding .}" />
+                        <Label
+                            Grid.Column="1"
+                            Text="{Binding Title}"
+                            Style="{StaticResource CollectionViewItemLabelStyle}" />
+                        <Label
+                            Grid.Column="2"
+                            Text="{Binding Extension}"
+                            Style="{StaticResource CollectionViewItemLabelStyle}" />
+                        <Label
+                            Grid.Column="3"
+                            Text="{Binding Duration.TotalSeconds}"
+                            Style="{StaticResource CollectionViewItemLabelStyle}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
