@@ -1,12 +1,15 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Core.ViewModels;
+using Microsoft.UI.Xaml.Controls;
 
 namespace Core
 {
     public partial class AppShell : Shell
     {
-        public AppShell()
+        public AppShell(AppShellViewModel appShellVM)
         {
             InitializeComponent();
+
+            BindingContext = appShellVM;
 
             Loaded += AppShell_Loaded;
             HandlerChanged += AppShell_HandlerChanged;
