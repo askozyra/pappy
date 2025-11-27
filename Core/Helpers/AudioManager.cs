@@ -20,7 +20,7 @@ namespace Core.Helpers
                 if (_currentTrack != value)
                 {
                     _currentTrack = value;
-                    OnPropertyChanged(nameof(CurrentTrack));
+                    OnPropertyChanged();
                 }
             }
         }

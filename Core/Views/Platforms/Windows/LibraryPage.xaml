@@ -60,10 +60,7 @@
                             Grid.Column="0"
                             x:Name="PlayHoverButton"
                             Text="▶"
-                            Padding="2"
-                            WidthRequest="15"
-                            HeightRequest="15"
-                            Margin="0"
+                            Style="{StaticResource LibraryPlayButtonStyle}"
                             Command="{Binding BindingContext.PlayMediaCommand, Source={x:Reference RootPage}}"
                             CommandParameter="{Binding .}" />
                         <Label
