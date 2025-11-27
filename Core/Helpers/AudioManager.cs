@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Views;
 using Core.Models.Music;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Core.Helpers
 {
@@ -27,6 +28,7 @@ namespace Core.Helpers
         public AudioManager()
         {
             MediaPlayer = new MediaElement();
+            PlaybackQueue = new List<Track>();
         }
 
         public void RegisterPlayer(MediaElement player)
@@ -52,8 +54,10 @@ namespace Core.Helpers
             MediaPlayer.Stop();
         }
 
-        private void OnPropertyChanged(string name)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

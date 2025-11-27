@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Core.Helpers;
 using Core.ViewModels;
-using Core.Views.Desktop;
+using Core.Views.Platforms.Windows;
 using Microsoft.Extensions.Logging;
 
 namespace Core
@@ -45,6 +45,7 @@ namespace Core
         {
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddSingleton<PlayerPage>();
+            builder.Services.AddTransient<LibraryPage>();
 
             return builder;
         }
@@ -52,7 +53,8 @@ namespace Core
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
         {
             builder.Services.AddSingleton<AppShellViewModel>();
-            builder.Services.AddTransient<PlayerViewModel>();
+            builder.Services.AddSingleton<PlayerViewModel>();
+            builder.Services.AddTransient<LibraryViewModel>();
 
             return builder;
         }
