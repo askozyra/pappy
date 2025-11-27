@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <x:String x:Key="CurrentFontFamily">Inder</x:String>
+    <x:Double x:Key="CurrentFontSize">12</x:Double>
+
+    <Color x:Key="White">White</Color>
+    <Color x:Key="Black">Black</Color>
+
+    <Color x:Key="Gray111">#111</Color>
+    <Color x:Key="Gray222">#222</Color>
+    <Color x:Key="Gray2A2A2A">#2A2A2A</Color>
+    <Color x:Key="Gray333">#333</Color>
+    <Color x:Key="Gray444">#444</Color>
+    <Color x:Key="Gray666">#666</Color>
+    <Color x:Key="Gray777">#777</Color>
+    <Color x:Key="GrayAAA">#AAA</Color>
+
+</ResourceDictionary>

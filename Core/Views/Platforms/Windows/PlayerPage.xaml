@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:communityToolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Core.Views.Platforms.Windows.PlayerPage"
+             Style="{StaticResource Page}">
+
+    <Grid>
+        <communityToolkit:MediaElement
+            x:Name="MediaPlayer"
+            ShouldAutoPlay="True"
+            MetadataArtist="{Binding AudioManager.CurrentTrack.Artist}"
+            MetadataTitle="{Binding AudioManager.CurrentTrack.Title}"
+            Source="{Binding AudioManager.CurrentTrack.Source}" />
+    </Grid>
+</ContentPage>

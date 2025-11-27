@@ -3,13 +3,28 @@
     x:Class="Core.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Core"
-    Shell.FlyoutBehavior="Flyout"
-    Title="Core">
+    xmlns:local="clr-namespace:Core.Views.Platforms.Windows"
+    FlyoutBehavior="Locked"
+    FlyoutBackgroundColor="{AppThemeBinding Dark={StaticResource Gray2A2A2A}}">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutSubItem Text="Open">
+                <MenuFlyoutItem Text="Audio / Video…" Command="{Binding OpenMediaCommand}" />
+                <MenuFlyoutItem Text="Folder…" Command="{Binding OpenFolderCommand}" />
+            </MenuFlyoutSubItem>
+        </MenuBarItem>
+    </Shell.MenuBarItems>
 
+    <FlyoutItem Title="Player" Icon="placeholder_icon.png">
+        <ShellContent
+            ContentTemplate="{DataTemplate local:PlayerPage}"
+            Route="Player" />
+    </FlyoutItem>
+    <FlyoutItem Title="Library" Icon="placeholder_icon.png">
+        <ShellContent
+            ContentTemplate="{DataTemplate local:LibraryPage}"
+            Route="Library" />
+    </FlyoutItem>
+    
 </Shell>
